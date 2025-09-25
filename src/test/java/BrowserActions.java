@@ -9,5 +9,25 @@ public class BrowserActions {
     public void firstTest() {
         driver = new ChromeDriver();
         driver.get("https://www.google.com");
+        navigation("https:www.amazon.com");
+        navigateBack();
+        navigateForward();
+        refresh();
+    }
+
+    public void navigation(String url) {
+        driver.navigate().to(url);
+    }
+
+    public void navigateBack() {
+        driver.navigate().back();
+    }
+
+    public void navigateForward() {
+        driver.navigate().forward();
+    }
+
+    public void refresh() {
+        driver.navigate().refresh();
     }
 }
