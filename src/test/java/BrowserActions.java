@@ -26,8 +26,10 @@ public class BrowserActions {
         getTitle();
 //        getPageSource();
         getWindowHandle();
-        driver.switchTo().newWindow(WindowType.TAB);
+        newWindow();
         getWindowHandle();
+        close();
+        quit();
     }
 
 
@@ -89,8 +91,20 @@ public class BrowserActions {
         System.out.println("Page source: " + source);
     }
 
+    public void newWindow() {
+        driver.switchTo().newWindow(WindowType.TAB);
+    }
+
     public void getWindowHandle() {
         String windowHandle = driver.getWindowHandle();
         System.out.println("The window handle: " + windowHandle);
+    }
+
+    public void close() {
+        driver.close();
+    }
+
+    public void quit() {
+        driver.quit();
     }
 }
