@@ -21,7 +21,7 @@ public class Testng2 {
 
     @Test
     public void OpenBrowser() {
-        driver.get("https:www.google.com");
+        driver.get("https:www.twitter.com");
     }
 
     @Test
