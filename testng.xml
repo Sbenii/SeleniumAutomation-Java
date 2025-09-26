@@ -2,7 +2,7 @@
     <test name="myTest">
         <classes>
             <class name="Testng"/>
-            <class name="Testng2"/>
+            <!--            <class name="Testng2"/>-->
         </classes>
     </test>
 </suite>

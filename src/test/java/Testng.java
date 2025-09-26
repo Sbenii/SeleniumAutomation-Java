@@ -19,33 +19,29 @@ public class Testng {
         driver.quit();
     }
 
-    @Test
+    @Test(priority = 0)
     public void OpenBrowser() {
         driver.get("https:www.google.com");
     }
 
-    @Test
+    @Test(priority = 1)
     public void SignUp() {
-
+        System.out.println("Sign Up!!!");
     }
 
-    @Test
+    @Test(priority = 2)
     public void SignIn() {
-
+        System.out.println("Sign in!!");
     }
 
-    @Test
+    @Test(priority = 3)
     public void AddToCart() {
-
+        System.out.println("Add to cart!!");
     }
 
-    @Test
+    @Test(priority = 4)
     public void LogOut() {
-
-    }
-
-    @Test
-    public void CloseBrowser() {
-
+        System.out.println("LogOut!!");
     }
 }
+
