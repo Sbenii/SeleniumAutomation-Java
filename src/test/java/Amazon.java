@@ -1,8 +1,14 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class Amazon {
     WebDriver driver;
@@ -10,12 +16,24 @@ public class Amazon {
     @BeforeTest
     public void prepare() throws InterruptedException {
         driver = new ChromeDriver();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
     }
+
     @AfterTest
-    public void end(){
+    public void end() throws InterruptedException {
+        Thread.sleep(3000);
         driver.quit();
     }
+
     @Test
-    public void OpenBrowser()
+    public void OpenBrowser() {
+        driver.navigate().to("https://www.amazon.com/");
+        driver.navigate().refresh();
+        driver.findElement(By.id("nav-link-accountList")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_email_login")));
+        emailField.sendKeys("sezeranben@gmail.com");
+
+
+    }
 }
