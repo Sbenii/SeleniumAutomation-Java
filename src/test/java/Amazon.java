@@ -33,9 +33,13 @@ public class Amazon {
         driver.findElement(By.id("nav-link-accountList")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_email_login")));
-        emailField.sendKeys("sezeranben@gmail.com");
+        String email = System.getenv("EMAIL");
+        emailField.sendKeys(email);
         driver.findElement(By.xpath("//*[@id=\"continue\"]/span/input")).click();
-        WebElement password = driver.findElement();
+        String pass = System.getenv("PASSWORD");
+        WebElement password = driver.findElement(By.id("ap_password"));
+        password.sendKeys(pass);
+        driver.findElement(By.id("signInSubmit"));
 
     }
 }
