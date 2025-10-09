@@ -26,6 +26,7 @@ public class Amazon {
     }
 
     @Test
+    //Sign in for valid user!!
     public void OpenBrowser() {
         driver.navigate().to("https://www.amazon.com/");
         driver.navigate().refresh();
@@ -33,7 +34,8 @@ public class Amazon {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_email_login")));
         emailField.sendKeys("sezeranben@gmail.com");
-
+        driver.findElement(By.xpath("//*[@id=\"continue\"]/span/input")).click();
+        WebElement password = driver.findElement();
 
     }
 }
