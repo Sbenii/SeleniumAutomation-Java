@@ -16,7 +16,6 @@ public class Amazon {
     @BeforeTest
     public void prepare() throws InterruptedException {
         driver = new ChromeDriver();
-        Thread.sleep(2000);
     }
 
     @AfterTest
@@ -36,10 +35,11 @@ public class Amazon {
         String email = System.getenv("EMAIL");
         emailField.sendKeys(email);
         driver.findElement(By.xpath("//*[@id=\"continue\"]/span/input")).click();
-        String pass = System.getenv("PASSWORD");
+        String pass = System.getenv("PWD");
         WebElement password = driver.findElement(By.id("ap_password"));
         password.sendKeys(pass);
-        driver.findElement(By.id("signInSubmit"));
+        driver.findElement(By.id("signInSubmit")).click();
+
 
     }
 }
