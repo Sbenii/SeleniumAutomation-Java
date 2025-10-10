@@ -100,7 +100,17 @@ public class Amazon {
     @Test(priority = 6)
     public void ProductDetailPage() {
         driver.findElement(By.partialLinkText("2025 MacBook Air 15-inch Laptop with M4 chip, 24GB Unified Memory, 256GB SSD Storage - Midnight")).click();
+        //Click to see full view
+        driver.findElement(By.id("canvasCaption")).click();
+        //Exit full view
+        driver.findElement(By.xpath("//*[@id=\"a-popover-1\"]/div/header/button")).click();
+        //Click "see more"
+        driver.findElement((By.xpath("//*[@id=\"poToggleButton\"]/a/span"))).click();
+    }
 
+    @Test(priority = 7)
+    public void AddToCart() {
+        driver.findElement(By.id("wishListMainButton")).click();
     }
 
 
