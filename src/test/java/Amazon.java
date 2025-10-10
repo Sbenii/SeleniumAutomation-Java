@@ -46,6 +46,7 @@ public class Amazon {
         password.sendKeys(pass);
         driver.findElement(By.id("signInSubmit")).click();
         driver.navigate().back();
+        driver.navigate().back();
     }
 
     @Test(priority = 1)
@@ -69,6 +70,14 @@ public class Amazon {
 
     @Test(priority = 3)
     public void SignUp() {
+        driver.findElement(By.className("a-button-input")).click();
+        String name = System.getenv("Name");
+        String password = System.getenv("pwd");
+        String Email = System.getenv("Mail");
+        driver.findElement(By.id("ap_email")).sendKeys(Email);
+        driver.findElement(By.id("ap_customer_name")).sendKeys(name);
+        driver.findElement(By.id("ap_password")).sendKeys(password);
+        driver.findElement(By.id("ap_password_check")).sendKeys(password);
 
     }
 
