@@ -72,13 +72,22 @@ public class Amazon {
     public void SignUp() {
         driver.findElement(By.className("a-button-input")).click();
         String name = System.getenv("Name");
-        String password = System.getenv("pwd");
+        String password = System.getenv("Pwd");
         String Email = System.getenv("Mail");
+
+        driver.findElement(By.id("ap_email")).clear();
         driver.findElement(By.id("ap_email")).sendKeys(Email);
         driver.findElement(By.id("ap_customer_name")).sendKeys(name);
         driver.findElement(By.id("ap_password")).sendKeys(password);
         driver.findElement(By.id("ap_password_check")).sendKeys(password);
+        driver.findElement(By.id("continue")).click();
 
+    }
+
+    @Test(priority = 4)
+    public void Navigation() {
+        driver.findElement(By.xpath("//*[@id=\"a-page\"]/div[1]/div[1]/div/a/i")).click();
+        driver.findElement(By.xpath("//*[@id=\"nav-flyout-iss-anchor\"]/div[2]/div/div[3]/span[1]/span/input")).click();
     }
 
 }
