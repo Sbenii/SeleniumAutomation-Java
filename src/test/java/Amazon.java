@@ -20,7 +20,7 @@ public class Amazon {
 
     @AfterTest
     public void end() throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         driver.quit();
     }
 
@@ -39,7 +39,5 @@ public class Amazon {
         WebElement password = driver.findElement(By.id("ap_password"));
         password.sendKeys(pass);
         driver.findElement(By.id("signInSubmit")).click();
-
-
     }
 }
