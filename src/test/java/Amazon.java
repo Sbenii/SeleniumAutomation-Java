@@ -33,10 +33,11 @@ public class Amazon {
 
     @Test(priority = 2)
     public void ValidSignIn() {
-        
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_email_login")));
         String email = System.getenv("EMAIL");
+        emailField.clear();
         emailField.sendKeys(email);
         driver.findElement(By.xpath("//*[@id=\"continue\"]/span/input")).click();
         driver.navigate().refresh();
@@ -57,5 +58,10 @@ public class Amazon {
         email.sendKeys(Email);
         driver.findElement(By.xpath("//input[@type='submit']")).click();
         driver.findElement((By.xpath("//a[@class='a-link-normal change-claim']"))).click();
+        String Message = driver.findElement(By.cssSelector("h1.a-size-medium-plus.a-spacing-small")).getText();
+        System.out.println("Error message:" + Message);
+        String Msg = driver.findElement(By.xpath("//p[@class='a-spacing-none a-spacing-top-base']")).getText();
+        System.out.println("Error message:" + Msg);
     }
+
 }
