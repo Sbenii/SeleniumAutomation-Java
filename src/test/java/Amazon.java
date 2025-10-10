@@ -85,9 +85,21 @@ public class Amazon {
     }
 
     @Test(priority = 4)
-    public void Navigation() {
+    public void NavigationToHome() {
         driver.findElement(By.xpath("//*[@id=\"a-page\"]/div[1]/div[1]/div/a/i")).click();
         driver.findElement(By.xpath("//*[@id=\"nav-flyout-iss-anchor\"]/div[2]/div/div[3]/span[1]/span/input")).click();
+    }
+
+    @Test(priority = 5)
+    public void Search() {
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Mac M4");
+        driver.findElement(By.id("nav-search-submit-button")).click();
+    }
+
+    @Test(priority = 6)
+    public void ProductDetailPage() {
+        driver.findElement(By.id("s-search-see-details-button")).click();
+
     }
 
 }
