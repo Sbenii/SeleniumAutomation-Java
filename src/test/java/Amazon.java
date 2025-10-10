@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -40,12 +41,11 @@ public class Amazon {
         emailField.clear();
         emailField.sendKeys(email);
         driver.findElement(By.xpath("//*[@id=\"continue\"]/span/input")).click();
-        driver.navigate().refresh();
         String pass = System.getenv("PWD");
-
-        WebElement password = driver.findElement(By.id("ap_password"));
+        WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_password")));
         password.sendKeys(pass);
         driver.findElement(By.id("signInSubmit")).click();
+        driver.navigate().back();
     }
 
     @Test(priority = 1)
@@ -57,11 +57,19 @@ public class Amazon {
         String Email = System.getenv("Mail");
         email.sendKeys(Email);
         driver.findElement(By.xpath("//input[@type='submit']")).click();
-        driver.findElement((By.xpath("//a[@class='a-link-normal change-claim']"))).click();
-        String Message = driver.findElement(By.cssSelector("h1.a-size-medium-plus.a-spacing-small")).getText();
+        String Message = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div/div/div/h1")).getText();
         System.out.println("Error message:" + Message);
-        String Msg = driver.findElement(By.xpath("//*[@id=\"intent-confirmation-container\"]/p[2]")).getText();
+        String Msg = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div/div/div/p[2]")).getText();
         System.out.println("Error message:" + Msg);
+        driver.findElement((By.xpath("//a[@class='a-link-normal change-claim']"))).click();
+        String ExpectedMessage = "Looks like you're new to Amazon";
+        Assert.assertEquals(Message, ExpectedMessage);
+
+    }
+
+    @Test(priority = 3)
+    public void SignUp() {
+
     }
 
 }
