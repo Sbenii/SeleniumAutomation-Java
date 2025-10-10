@@ -60,7 +60,7 @@ public class Amazon {
         driver.findElement((By.xpath("//a[@class='a-link-normal change-claim']"))).click();
         String Message = driver.findElement(By.cssSelector("h1.a-size-medium-plus.a-spacing-small")).getText();
         System.out.println("Error message:" + Message);
-        String Msg = driver.findElement(By.xpath("//p[@class='a-spacing-none a-spacing-top-base']")).getText();
+        String Msg = driver.findElement(By.xpath("//*[@id=\"intent-confirmation-container\"]/p[2]")).getText();
         System.out.println("Error message:" + Msg);
     }
 
