@@ -87,6 +87,7 @@ public class Amazon {
     @Test(priority = 4)
     public void NavigationToHome() {
         driver.findElement(By.xpath("//*[@id=\"a-page\"]/div[1]/div[1]/div/a/i")).click();
+        //Dismiss address change
         driver.findElement(By.xpath("//*[@id=\"nav-flyout-iss-anchor\"]/div[2]/div/div[3]/span[1]/span/input")).click();
     }
 
@@ -98,8 +99,9 @@ public class Amazon {
 
     @Test(priority = 6)
     public void ProductDetailPage() {
-        driver.findElement(By.id("s-search-see-details-button")).click();
+        driver.findElement(By.partialLinkText("2025 MacBook Air 15-inch Laptop with M4 chip, 24GB Unified Memory, 256GB SSD Storage - Midnight")).click();
 
     }
+
 
 }
