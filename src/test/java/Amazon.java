@@ -25,19 +25,35 @@ public class Amazon {
     }
 
     @Test
-    //Sign in for valid user!!
+    public void AmazonTests() {
+        OpenBrowser();
+        ValidSignIn();
+        InvalidSignIn();
+    }
+
     public void OpenBrowser() {
         driver.navigate().to("https://www.amazon.com/");
         driver.navigate().refresh();
+    }
+
+    public void ValidSignIn() {
+
         driver.findElement(By.id("nav-link-accountList")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_email_login")));
         String email = System.getenv("EMAIL");
         emailField.sendKeys(email);
         driver.findElement(By.xpath("//*[@id=\"continue\"]/span/input")).click();
+        driver.navigate().refresh();
         String pass = System.getenv("PWD");
+
         WebElement password = driver.findElement(By.id("ap_password"));
         password.sendKeys(pass);
         driver.findElement(By.id("signInSubmit")).click();
+    }
+
+    public void InvalidSignIn() {
+        driver.navigate().refresh();
+        driver.findElement(By.id("nav-link-accountList")).click();
     }
 }
