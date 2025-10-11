@@ -32,4 +32,14 @@ public class Auca {
         driver.findElement(By.id("btnLogin")).click();
 
     }
+
+    @Test(priority = 2)
+    public void ValidSignIn() {
+        String ID = System.getenv("ID");
+        String pass = System.getenv("Pass");
+        driver.findElement(By.id("txtUsername")).sendKeys(ID);
+        driver.findElement(By.id("txtPassword")).sendKeys(pass);
+        driver.findElement(By.id("btnLogin")).click();
+
+    }
 }
