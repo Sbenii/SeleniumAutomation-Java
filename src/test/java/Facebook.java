@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -10,7 +11,7 @@ public class Facebook {
 
     @BeforeTest
     public void Prepare() {
-        driver = new SafariDriver();
+        driver = new ChromeDriver();
     }
 
     @AfterTest
@@ -30,8 +31,12 @@ public class Facebook {
         String Iemail = System.getenv("Iemail");
         String Iphone = System.getenv("Iphone");
         String Ipass = System.getenv("Ipass");
-        driver.findElement(By.id("email")).sendKeys(Iemail);
+//        driver.findElement(By.id("email")).sendKeys(Iemail);
+        driver.findElement(By.id("email")).sendKeys(Iphone);
         driver.findElement(By.id("pass")).sendKeys(Ipass);
-//        driver.findElement(By.xpath("//*[@id=\"u_0_5_08\"]")).click();
+        driver.findElement(By.name("login")).click();
+        String ActualResults = driver.findElement(By.className("_9ay7")).getText();
+        String ExpectedResults = "The email or mobile number you entered isn’t connected to an account. Find your account and log in.";
+        Assert.assertEquals(ActualResults, ExpectedResults);
     }
 }
