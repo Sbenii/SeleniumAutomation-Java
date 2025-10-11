@@ -59,4 +59,10 @@ public class Facebook {
         Assert.assertEquals(ActualResults, ExpectedResults);
     }
 
+    @Test(priority = 3)
+    public void InvalidSignUp() {
+        //Cancel finding account
+        driver.findElement(By.xpath("//*[@id=\"identify_yourself_flow\"]/div/div[3]/div/div[1]/a")).click();
+        driver.findElement(By.className("_97w5")).click();
+    }
 }
