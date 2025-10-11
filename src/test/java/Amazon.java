@@ -103,15 +103,16 @@ public class Amazon {
         //Click to see full view
         driver.findElement(By.id("canvasCaption")).click();
         //Exit full view
-        driver.findElement(By.xpath("//*[@id=\"a-popover-1\"]/div/header/button")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement close = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"a-popover-1\"]/div/header/button")));
+        close.click();
         //Click "see more"
-        driver.findElement((By.xpath("//*[@id=\"poToggleButton\"]/a/span"))).click();
+        driver.findElement((By.xpath("//span[normalize-space()='See more']"))).click();
     }
 
     @Test(priority = 7)
     public void AddToCart() {
-        driver.findElement(By.id("wishListMainButton")).click();
+        driver.findElement(By.xpath("//a[@title='Add to List']")).click();
+        ValidSignIn();
     }
-
-
 }
