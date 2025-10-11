@@ -87,8 +87,8 @@ public class Amazon {
     @Test(priority = 4)
     public void NavigationToHome() {
         driver.findElement(By.xpath("//*[@id=\"a-page\"]/div[1]/div[1]/div/a/i")).click();
-        //Dismiss address change
-        driver.findElement(By.xpath("//*[@id=\"nav-flyout-iss-anchor\"]/div[2]/div/div[3]/span[1]/span/input")).click();
+//        //Dismiss address change
+//        driver.findElement(By.xpath("//*[@id=\"nav-flyout-iss-anchor\"]/div[2]/div/div[3]/span[1]/span/input")).click();
     }
 
     @Test(priority = 5)
@@ -113,13 +113,17 @@ public class Amazon {
 
     @Test(priority = 7)
     public void AddToCart() {
-        driver.findElement(By.xpath("//a[@title='Add to List']")).click();
-        ValidSignIn();
+        driver.findElement(By.xpath("//*[@id=\"wishListMainButton\"]")).click();
+//        ValidSignIn();
     }
 
     @Test(priority = 8)
-    public void HomePageCarousel() {
-        driver.findElement(By.id("nav-logo-sprites"));
-        driver.findElement(By.xpath("//*[@id=\"gw-desktop-herotator\"]/div/div/div/div[3]/a")).click();
+    public void HomePageCarousel() throws InterruptedException {
+        driver.findElement(By.xpath("//a[@id='nav-logo-sprites']")).click();
+        for (int i = 0; i <= 5; ++i) {
+            Thread.sleep(1000);
+            driver.findElement(By.xpath("//a[@class='a-carousel-goto-prevpage']")).click();
+        }
+
     }
 }
