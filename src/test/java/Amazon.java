@@ -98,11 +98,12 @@ public class Amazon {
     }
 
     @Test(priority = 6)
-    public void ProductDetailPage() {
+    public void ProductDetailPage() throws InterruptedException {
         driver.findElement(By.partialLinkText("2025 MacBook Air 15-inch Laptop with M4 chip, 24GB Unified Memory, 256GB SSD Storage - Midnight")).click();
         //Click to see full view
         driver.findElement(By.id("canvasCaption")).click();
         //Exit full view
+        Thread.sleep(2000);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement close = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"a-popover-1\"]/div/header/button")));
         close.click();
@@ -114,5 +115,11 @@ public class Amazon {
     public void AddToCart() {
         driver.findElement(By.xpath("//a[@title='Add to List']")).click();
         ValidSignIn();
+    }
+
+    @Test(priority = 8)
+    public void HomePageCarousel() {
+        driver.findElement(By.id("nav-logo-sprites"));
+        driver.findElement(By.xpath("//*[@id=\"gw-desktop-herotator\"]/div/div/div/div[3]/a")).click();
     }
 }
