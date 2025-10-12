@@ -73,6 +73,14 @@ public class Auca {
         WebElement Down = driver.findElement(By.xpath("//footer[1]"));
         js.executeScript("arguments[0].scrollIntoView(true);", Down);
 
+    }
+
+    @Test(priority = 6)
+    public void Balance() {
+        driver.findElement(By.id("paymentHistory")).click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight");
 
     }
 }
+
