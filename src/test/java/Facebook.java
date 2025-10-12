@@ -47,10 +47,11 @@ public class Facebook {
     }
 
     @Test(priority = 2)
-    public void InvalidFindAccount() {
+    public void InvalidFindAccount() throws InterruptedException {
         driver.findElement(By.cssSelector("a[href*='facebook.com/login/identify']")).click();
         String Iemail = System.getenv("Iemail");
         driver.findElement(By.id("identify_email")).sendKeys(Iemail);
+        Thread.sleep(2000);
         driver.findElement(By.name("did_submit")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         WebElement Msg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"identify_yourself_flow\"]/div/div[2]/div[1]/div[1]")));
@@ -81,5 +82,5 @@ public class Facebook {
         driver.findElement(By.id("password_step_input")).sendKeys("");
         driver.findElement(By.name("websubmit"));
     }
-    
+
 }
