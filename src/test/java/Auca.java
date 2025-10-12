@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -41,5 +42,12 @@ public class Auca {
         driver.findElement(By.id("txtPassword")).sendKeys(pass);
         driver.findElement(By.id("btnLogin")).click();
 
+    }
+
+    @Test(priority = 3)
+    public void Home() {
+        driver.findElement(By.id("Home"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
     }
 }
