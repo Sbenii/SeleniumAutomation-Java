@@ -44,7 +44,7 @@ public class Auca {
 
     @Test(priority = 3)
     public void Home() throws InterruptedException {
-        driver.findElement(By.id("Home"));
+        driver.findElement(By.id("Home")).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
         Thread.sleep(2000);
@@ -55,32 +55,35 @@ public class Auca {
     public void AcademicBulletin() throws InterruptedException {
         WebElement element = driver.findElement(By.id("bulletinAudit"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        element.sendKeys(Keys.PAGE_UP);
+        element.sendKeys(Keys.HOME);
         Thread.sleep(1000);
         element.click();
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
         Thread.sleep(2000);
-        WebElement UpKey = driver.findElement(By.id("Home"));
-        UpKey.sendKeys(Keys.PAGE_DOWN);
-        Thread.sleep(1000);
-        UpKey.click();
     }
 
     @Test(priority = 5)
-    public void CoursePrerequisites() {
+    public void CoursePrerequisites() throws InterruptedException {
+        WebElement Course = driver.findElement(By.id("lbPrerequisite"));
+        Course.sendKeys(Keys.HOME);
+        Thread.sleep(1000);
+        Course.click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        driver.findElement(By.id("lbPrerequisite")).click();
-        WebElement Down = driver.findElement(By.xpath("//footer[1]"));
-        js.executeScript("arguments[0].scrollIntoView(true);", Down);
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        Thread.sleep(1000);
 
     }
 
     @Test(priority = 6)
-    public void Balance() {
-        driver.findElement(By.id("paymentHistory")).click();
+    public void Balance() throws InterruptedException {
+        WebElement Balance = driver.findElement(By.id("paymentHistory"));
+        Balance.sendKeys(Keys.HOME);
+        Thread.sleep(1000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0,document.body.scrollHeight");
-
+        driver.findElement(By.id("paymentHistory")).click();
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        Thread.sleep(1000);
     }
+
 }
 
