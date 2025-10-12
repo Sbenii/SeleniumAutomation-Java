@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -45,9 +46,20 @@ public class Auca {
     }
 
     @Test(priority = 3)
-    public void Home() {
+    public void Home() throws InterruptedException {
         driver.findElement(By.id("Home"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        Thread.sleep(2000);
+
+    }
+
+    @Test(priority = 4)
+    public void AcademicBulletin() throws InterruptedException {
+        WebElement element = driver.findElement(By.id("bulletinAudit"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(1000);
+        element.click();
     }
 }
