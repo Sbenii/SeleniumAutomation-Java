@@ -1,5 +1,6 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -94,6 +95,24 @@ public class Auca {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
         Thread.sleep(1000);
+    }
+
+    @Test(priority = 8)
+    public void Chat() throws InterruptedException {
+        WebElement Chat = driver.findElement(By.id("GotChat"));
+        Chat.sendKeys(Keys.HOME);
+        Thread.sleep(1000);
+        Chat.click();
+        driver.findElement(By.id("MessagesRepeater_lblChatTitle_0")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.id("MessagesRepeater_lblChatTitle_1")).click();
+        Thread.sleep(1000);
+        WebElement List = driver.findElement(By.id("ListHeads"));
+        List.click();
+        Select select = new Select(List);
+        select.selectByVisibleText("REGISTRAR - Hirwa Fabrice");
+        Thread.sleep(1000);
+        List.click();
     }
 
 }
