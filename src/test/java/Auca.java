@@ -1,7 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -58,8 +55,24 @@ public class Auca {
     public void AcademicBulletin() throws InterruptedException {
         WebElement element = driver.findElement(By.id("bulletinAudit"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        element.sendKeys(Keys.PAGE_UP);
         Thread.sleep(1000);
         element.click();
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        Thread.sleep(2000);
+        WebElement UpKey = driver.findElement(By.id("Home"));
+        UpKey.sendKeys(Keys.PAGE_DOWN);
+        Thread.sleep(1000);
+        UpKey.click();
+    }
+
+    @Test(priority = 5)
+    public void CoursePrerequisites() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        driver.findElement(By.id("lbPrerequisite")).click();
+        WebElement Down = driver.findElement(By.xpath("//footer[1]"));
+        js.executeScript("arguments[0].scrollIntoView(true);", Down);
+
+
     }
 }
