@@ -54,10 +54,10 @@ public class Auca {
     @Test(priority = 4)
     public void AcademicBulletin() throws InterruptedException {
         WebElement element = driver.findElement(By.id("bulletinAudit"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         element.sendKeys(Keys.HOME);
         Thread.sleep(1000);
         element.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
         Thread.sleep(2000);
     }
@@ -79,8 +79,19 @@ public class Auca {
         WebElement Balance = driver.findElement(By.id("paymentHistory"));
         Balance.sendKeys(Keys.HOME);
         Thread.sleep(1000);
+        Balance.click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        driver.findElement(By.id("paymentHistory")).click();
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+        Thread.sleep(1000);
+    }
+
+    @Test(priority = 7)
+    public void FailedCourses() throws InterruptedException {
+        WebElement Fail = driver.findElement(By.id("lbFailedCourses"));
+        Fail.sendKeys(Keys.HOME);
+        Thread.sleep(1000);
+        Fail.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
         Thread.sleep(1000);
     }
