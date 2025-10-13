@@ -3,6 +3,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -45,6 +46,19 @@ public class CURA {
         driver.findElement(By.id("menu-toggle")).click();
         Thread.sleep(1500);
         driver.findElement(By.xpath("//a[normalize-space()='Login']")).click();
-        
+
     }
+
+    @Test(priority = 2)
+    public void InvalidLogin() {
+        WebElement username = driver.findElement(By.id("txt-username"));
+        WebElement password = driver.findElement(By.id("txt-password"));
+        username.sendKeys(" ");
+        password.sendKeys(" ");
+        driver.findElement(By.id("btn-login")).click();
+        String ActualResults = driver.findElement(By.xpath("//p[@class='lead text-danger']")).getText();
+        String ExpectedResults = "Login failed! Please ensure the username and password are valid.";
+        Assert.assertEquals(ActualResults, ExpectedResults);
+    }
+
 }
