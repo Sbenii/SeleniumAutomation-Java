@@ -10,36 +10,34 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CURA {
     WebDriver driver;
 
     @BeforeTest
     public void Prepare() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--guest");
 
         // Disable the password manager, credential services, and infobars
-        Map<String, Object> prefs = new HashMap<>();
-        prefs.put("profile.password_manager_enabled", false);
-        prefs.put("credentials_enable_service", false);
-        prefs.put("autofill.profile_enabled", false);
-        prefs.put("autofill.credit_card_enabled", false);
-        prefs.put("autofill.enabled", false);
-        options.setExperimentalOption("prefs", prefs);
+//        Map<String, Object> prefs = new HashMap<>();
+//        prefs.put("profile.password_manager_enabled", false);
+//        prefs.put("credentials_enable_service", false);
+//        prefs.put("autofill.profile_enabled", false);
+//        prefs.put("autofill.credit_card_enabled", false);
+//        prefs.put("autofill.enabled", false);
+//        options.setExperimentalOption("prefs", prefs);
 
         // Disable Chrome UI features that interfere with automation
-        options.addArguments("--disable-save-password-bubble");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--disable-autofill-passwords");
-        options.addArguments("--disable-autofill-keyboard-accessory-view");
-        options.addArguments("--disable-browser-side-navigation");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--no-default-browser-check");
-        options.addArguments("--start-maximized");
+//        options.addArguments("--disable-save-password-bubble");
+//        options.addArguments("--disable-notifications");
+//        options.addArguments("--disable-infobars");
+//        options.addArguments("--disable-autofill-passwords");
+//        options.addArguments("--disable-autofill-keyboard-accessory-view");
+//        options.addArguments("--disable-browser-side-navigation");
+//        options.addArguments("--disable-popup-blocking");
+//        options.addArguments("--disable-extensions");
+//        options.addArguments("--no-default-browser-check");
+//        options.addArguments("--start-maximized");
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
