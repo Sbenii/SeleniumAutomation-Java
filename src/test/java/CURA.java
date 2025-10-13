@@ -50,7 +50,7 @@ public class CURA {
     }
 
     @Test(priority = 2)
-    public void InvalidLogin() {
+    public void InvalidSignIn() {
         WebElement username = driver.findElement(By.id("txt-username"));
         WebElement password = driver.findElement(By.id("txt-password"));
         username.sendKeys(" ");
@@ -59,6 +59,15 @@ public class CURA {
         String ActualResults = driver.findElement(By.xpath("//p[@class='lead text-danger']")).getText();
         String ExpectedResults = "Login failed! Please ensure the username and password are valid.";
         Assert.assertEquals(ActualResults, ExpectedResults);
+    }
+
+    @Test(priority = 3)
+    public void ValidSignIn() {
+        String username = driver.findElement(By.xpath("//input[@value='John Doe']")).getAttribute("value");
+        String password = driver.findElement(By.xpath("//input[@value='ThisIsNotAPassword']")).getAttribute("value");
+        driver.findElement(By.id("txt-username")).sendKeys(username);
+        driver.findElement(By.id("txt-password")).sendKeys(password);
+        driver.findElement(By.id("btn-login")).click();
     }
 
 }
