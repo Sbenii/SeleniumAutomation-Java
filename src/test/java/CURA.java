@@ -3,17 +3,45 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CURA {
     WebDriver driver;
 
     @BeforeTest
     public void Prepare() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+
+        // Disable the password manager, credential services, and infobars
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("profile.password_manager_enabled", false);
+        prefs.put("credentials_enable_service", false);
+        prefs.put("autofill.profile_enabled", false);
+        prefs.put("autofill.credit_card_enabled", false);
+        prefs.put("autofill.enabled", false);
+        options.setExperimentalOption("prefs", prefs);
+
+        // Disable Chrome UI features that interfere with automation
+        options.addArguments("--disable-save-password-bubble");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-infobars");
+        options.addArguments("--disable-autofill-passwords");
+        options.addArguments("--disable-autofill-keyboard-accessory-view");
+        options.addArguments("--disable-browser-side-navigation");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--no-default-browser-check");
+        options.addArguments("--start-maximized");
+
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
 
@@ -68,6 +96,20 @@ public class CURA {
         driver.findElement(By.id("txt-username")).sendKeys(username);
         driver.findElement(By.id("txt-password")).sendKeys(password);
         driver.findElement(By.id("btn-login")).click();
+    }
+
+    @Test(priority = 4)
+    public void MakeAppointment() throws InterruptedException {
+
+        WebElement Facility = driver.findElement(By.id("combo_facility"));
+        Facility.click();
+        Select select = new Select(Facility);
+        select.selectByValue("Hongkong CURA Healthcare Center");
+        Thread.sleep(1000);
+        driver.findElement(By.id("chk_hospotal_readmission")).click();
+        driver.findElement(By.xpath("//*[@id=\"radio_program_medicaid\"]")).click();
+
+        Thread.sleep(3000);
     }
 
 }
