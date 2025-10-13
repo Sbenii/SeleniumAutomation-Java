@@ -113,8 +113,8 @@ public class Auca {
         select.selectByVisibleText("REGISTRAR - Hirwa Fabrice");
         Thread.sleep(1000);
         List.click();
-        driver.findElement(By.id("Home")).click();
-        
+        driver.findElement(By.id("BackHome")).click();
+
     }
 
 
