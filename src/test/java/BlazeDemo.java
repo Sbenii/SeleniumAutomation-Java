@@ -28,8 +28,11 @@ public class BlazeDemo {
     }
 
     @Test(priority = 1)
-    public void CheckDestinationOfTheWeek() {
+    public void CheckDestinationOfTheWeek() throws InterruptedException {
         driver.findElement(By.partialLinkText("destination of the week! The Beach!")).click();
+        String Place = driver.findElement(By.xpath("/html/body/div[2]")).getText();
+        System.out.println(Place);
+        driver.findElement(By.partialLinkText("Travel")).click();
     }
 
     @Test(priority = 2)
