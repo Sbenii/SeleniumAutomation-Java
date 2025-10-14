@@ -87,7 +87,17 @@ public class CURA {
         WebElement Date = driver.findElement(By.id("txt_visit_date"));
         Date.click();
         Date.sendKeys("30/10/2025");
+        driver.findElement(By.id("txt_comment")).click();
         driver.findElement(By.id("txt_comment")).sendKeys("Looking forward to the appointment");
+        driver.findElement(By.id("btn-book-appointment")).click();
+        driver.findElement(By.partialLinkText("Go to Homepage")).click();
+    }
+
+    @Test(priority = 5)
+    public void History() {
+        driver.findElement(By.id("menu-toggle")).click();
+        driver.findElement(By.partialLinkText("History")).click();
+        driver.findElement(By.partialLinkText("Go to Homepage")).click();
     }
 
 
