@@ -50,4 +50,9 @@ public class BlazeDemo {
         driver.findElement(By.xpath("/html/body/div[3]/form/div/input")).click();
 
     }
+
+    @Test(priority = 3)
+    public void ChooseFlight() {
+        driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr[3]/td[1]/input")).click();
+    }
 }
