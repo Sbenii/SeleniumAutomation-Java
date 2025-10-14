@@ -45,5 +45,6 @@ public class BlazeDemo {
         selectDestination.selectByValue("Cairo");
         DestinationCity.click();
         driver.findElement(By.xpath("/html/body/div[3]/form/div/input")).click();
+
     }
 }
