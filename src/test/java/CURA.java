@@ -84,8 +84,11 @@ public class CURA {
         Thread.sleep(1000);
         driver.findElement(By.id("chk_hospotal_readmission")).click();
         driver.findElement(By.xpath("//*[@id=\"radio_program_medicaid\"]")).click();
-
-        Thread.sleep(3000);
+        WebElement Date = driver.findElement(By.id("txt_visit_date"));
+        Date.click();
+        Date.sendKeys("30/10/2025");
+        driver.findElement(By.id("txt_comment")).sendKeys("Looking forward to the appointment");
     }
+
 
 }
