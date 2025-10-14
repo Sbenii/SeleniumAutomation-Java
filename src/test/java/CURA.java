@@ -108,4 +108,9 @@ public class CURA {
         driver.findElement(By.partialLinkText("Profile")).click();
     }
 
+    @Test(priority = 7)
+    public void Logout() {
+        driver.findElement(By.partialLinkText("Logout")).click();
+    }
+
 }
