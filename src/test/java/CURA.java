@@ -102,5 +102,10 @@ public class CURA {
         driver.findElement(By.partialLinkText("Go to Homepage")).click();
     }
 
+    @Test(priority = 6)
+    public void Profile() {
+        driver.findElement(By.id("menu-toggle")).click();
+        driver.findElement(By.partialLinkText("Profile")).click();
+    }
 
 }
