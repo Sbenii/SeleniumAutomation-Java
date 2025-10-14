@@ -97,6 +97,8 @@ public class CURA {
     public void History() {
         driver.findElement(By.id("menu-toggle")).click();
         driver.findElement(By.partialLinkText("History")).click();
+        String History = driver.findElement(By.id("history")).getText();
+        System.out.println(History);
         driver.findElement(By.partialLinkText("Go to Homepage")).click();
     }
 
