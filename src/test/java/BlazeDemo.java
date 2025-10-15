@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -73,5 +74,12 @@ public class BlazeDemo {
         driver.findElement(By.id("nameOnCard")).sendKeys("John Doe");
         driver.findElement(By.id("rememberMe")).click();
         driver.findElement(By.xpath("//input[@value='Purchase Flight']")).click();
+    }
+
+    @Test(priority = 5)
+    public void Confirmation() {
+        String ActualResult = driver.findElement(By.xpath("/html/body/div[2]/div/h1")).getText();
+        String ExpectedResult = "Thank you for your purchase today!";
+        Assert.assertEquals(ActualResult, ExpectedResult);
     }
 }
