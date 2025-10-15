@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -13,7 +14,9 @@ public class BlazeDemo {
 
     @BeforeTest
     public void prepare() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--guest");
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
 
@@ -98,5 +101,19 @@ public class BlazeDemo {
         driver.findElement(By.id("password")).sendKeys(pass);
         driver.findElement(By.name("remember")).click();
         driver.findElement(By.partialLinkText("Login")).click();
+    }
+
+    @Test(priority = 8)
+    public void Register() {
+        driver.findElement(By.partialLinkText("Register")).click();
+        String email = System.getenv("Email");
+        String pass = System.getenv("Pass");
+        String name = System.getenv("Pass");
+        driver.findElement(By.id("name")).sendKeys(name);
+        driver.findElement(By.id("company")).sendKeys("SBLtd");
+        driver.findElement(By.id("email")).sendKeys(email);
+        driver.findElement(By.id("password")).sendKeys(pass);
+        driver.findElement(By.id("password-confirm")).sendKeys(pass);
+
     }
 }
