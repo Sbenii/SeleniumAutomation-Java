@@ -88,4 +88,15 @@ public class BlazeDemo {
         String Information = driver.findElement(By.xpath("/html/body/div[2]/div/table/tbody")).getText();
         System.out.println(Information);
     }
+
+    @Test(priority = 7)
+    public void InvalidSignUp() {
+        driver.findElement(By.partialLinkText("home")).click();
+        String email = System.getenv("Email");
+        String pass = System.getenv("Pass");
+        driver.findElement(By.id("email")).sendKeys(email);
+        driver.findElement(By.id("password")).sendKeys(pass);
+        driver.findElement(By.name("remember")).click();
+        driver.findElement(By.partialLinkText("Login")).click();
+    }
 }
