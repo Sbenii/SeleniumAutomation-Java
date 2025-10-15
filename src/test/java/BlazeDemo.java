@@ -58,14 +58,19 @@ public class BlazeDemo {
 
     @Test(priority = 4)
     public void PersonalInformation() {
-        driver.findElement(By.id("inputName")).sendKeys("");
-        driver.findElement(By.id("address")).sendKeys("");
-        driver.findElement(By.id("city")).sendKeys("");
-        driver.findElement(By.id("state")).sendKeys("");
-        driver.findElement(By.id("zipCode")).sendKeys("");
-        driver.findElement(By.id("creditCardNumber")).sendKeys("");
-        driver.findElement(By.id("creditCardYear")).sendKeys("");
-        driver.findElement(By.id("nameOnCard")).sendKeys("");
+        driver.findElement(By.id("inputName")).sendKeys("John Doe");
+        driver.findElement(By.id("address")).sendKeys("123Main ST");
+        driver.findElement(By.id("city")).sendKeys("San Fransisco");
+        driver.findElement(By.id("state")).sendKeys("California");
+        driver.findElement(By.id("zipCode")).sendKeys("12345");
+        WebElement CardType = driver.findElement(By.id("cardType"));
+        CardType.click();
+        Select select = new Select(CardType);
+        select.selectByVisibleText("American Express");
+        CardType.click();
+        driver.findElement(By.id("creditCardNumber")).sendKeys("000001111122");
+        driver.findElement(By.id("creditCardYear")).sendKeys("2030");
+        driver.findElement(By.id("nameOnCard")).sendKeys("John Doe");
         driver.findElement(By.id("rememberMe")).click();
         driver.findElement(By.xpath("//input[@value='Purchase Flight']")).click();
     }
