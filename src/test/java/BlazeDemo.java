@@ -82,4 +82,10 @@ public class BlazeDemo {
         String ExpectedResult = "Thank you for your purchase today!";
         Assert.assertEquals(ActualResult, ExpectedResult);
     }
+
+    @Test(priority = 6)
+    public void PurchaseInformation() {
+        String Information = driver.findElement(By.xpath("/html/body/div[2]/div/table/tbody")).getText();
+        System.out.println(Information);
+    }
 }
