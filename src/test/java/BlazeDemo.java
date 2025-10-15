@@ -114,6 +114,12 @@ public class BlazeDemo {
         driver.findElement(By.id("email")).sendKeys(email);
         driver.findElement(By.id("password")).sendKeys(pass);
         driver.findElement(By.id("password-confirm")).sendKeys(pass);
+        driver.findElement(By.partialLinkText("Register")).click();
+    }
 
+    @Test(priority = 9)
+    public void ValidSignIn() {
+        driver.findElement(By.partialLinkText("Blaze")).click();
+        InvalidSignUp();
     }
 }
