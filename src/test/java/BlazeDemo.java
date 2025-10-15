@@ -58,6 +58,15 @@ public class BlazeDemo {
 
     @Test(priority = 4)
     public void PersonalInformation() {
-
+        driver.findElement(By.id("inputName")).sendKeys("");
+        driver.findElement(By.id("address")).sendKeys("");
+        driver.findElement(By.id("city")).sendKeys("");
+        driver.findElement(By.id("state")).sendKeys("");
+        driver.findElement(By.id("zipCode")).sendKeys("");
+        driver.findElement(By.id("creditCardNumber")).sendKeys("");
+        driver.findElement(By.id("creditCardYear")).sendKeys("");
+        driver.findElement(By.id("nameOnCard")).sendKeys("");
+        driver.findElement(By.id("rememberMe")).click();
+        driver.findElement(By.xpath("//input[@value='Purchase Flight']")).click();
     }
 }
