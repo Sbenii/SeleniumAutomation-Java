@@ -55,4 +55,9 @@ public class BlazeDemo {
     public void ChooseFlight() {
         driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr[3]/td[1]/input")).click();
     }
+
+    @Test(priority = 4)
+    public void PersonalInformation() {
+
+    }
 }
