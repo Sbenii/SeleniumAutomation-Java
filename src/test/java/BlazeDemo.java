@@ -28,7 +28,7 @@ public class BlazeDemo {
 
     @Test(priority = 0)
     public void OpenBrowser() {
-        driver.navigate().to("https://blazedemo.com/");
+        driver.get("https://blazedemo.com/");
     }
 
     @Test(priority = 1)
